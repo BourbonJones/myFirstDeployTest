@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <Title>Relatório de contas</Title>
+        <link rel="stylesheet" href="/css/home.css">
+        <script type="module" src="../js/home.js"></script>
+    </head>
+    <body>
+        <div id="navbar" class="main_style">
+            <a href="/summary" class="toClick">Resumo</a>
+            <a href="/categories" class="toClick">Ver por categorias</a>
+        </div>
+
+        <div id="title_page" class="main_style">
+            <h1 id="h1_titulo">Relatório de contas</h1>
+        </div>
+
+        <div id="main_image" class="main_style">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8Wu_yBZmjkQHnVWX9RdWgOObDRvfxgIqgrQ&usqp=CAU"/>
+        </div>
+
+        <form id="feature_body" class="main_style">
+            <div id="inputs" class="main_style shadow flex_column">
+                <h2>Seus Dados Básicos</h2>
+                <div>
+                    <label>Nome: </label>
+                    <input id="input_name" name="input_name" class="formfield shadow" type="text" placeholder="Nome" required>
+                </div>
+                <div>
+                    <label>Saldo Inicial: </label>
+                    <input id="input_balance" name="input_balance" class="formfield shadow" type="text" placeholder="Saldo Inicial" required>
+                </div>
+            </div>
+
+            <div id="files" class="main_style shadow flex_column">
+                <h2>Faça o upload de seu CSV aqui</h2>
+                <div style="color:red">Modelo: item;date;value;cash in(1)/cash out(0);categoria</div>
+                <div>
+                    <input type="file" id="input_files" name="input_files"/>
+                </div>
+            </div>
+
+           
+
+            <div id="bd_features" class="main_style shadow flex_column">
+                <h2>Controles do seu extrato</h2>
+                <button type="submit" id="submit" class="formfield1 shadow" style="background-color: green; color: white"> Adicionar Contas </button>
+                <button id="delete_bill" class="formfield1 shadow" style="background-color: red; color: white"> Deletar Contas </button>
+            </div>
+        </form>
+
+    </body>
+</html>

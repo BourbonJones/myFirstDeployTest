@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <link rel="stylesheet" href="/css/home.css">
+        <link rel="stylesheet" href="/css/categories.css">
+        <Title>JSS_BACK Categories</Title>
+        <script type="module" src="../js/categories.js"></script>
+    </head>
+    <body>
+        <div id="navbar" class="main_style">
+            <a href="/" class="toClick">Home</a>
+            <a href="/summary" class="toClick">Resumo</a>
+        </div>
+
+        <div id="title_page" class="main_style">
+            <h1 id="owner"></h1>
+        </div>
+
+        <div id="balances" class="main_style">
+            <div class="sub_balances">
+
+                <div class="circleSquare">
+                    <div class="squareValue">Saldo Inicial</div>
+                    <div class="squareValue" id="ob_value" style="color: gray;"></div>
+                </div>
+
+                <div class="circleSquare">
+                    <div class="squareValue">Saldo Final</div>
+                    <div class="squareValue" id="fb_value" style="color: gray;"></div>
+                </div>
+
+            </div>
+
+            <div class="sub_balances">
+
+                <div class="circleSquare">
+                    <div class="squareValue">Entradas</div>
+                    <div class="squareValue" id="in_value" style="color: green;"></div>
+                </div>
+
+                <div class="circleSquare">
+                    <div class="squareValue">Saídas</div>
+                    <div class="squareValue" id="ex_value" style="color: red;"></div>
+                </div>
+    
+            </div>
+        </div>
+
+        <div>
+            <table id="list">
+                <thead><tr id="list_head"></tr></thead>
+                <tbody id="list_body"></tbody>
+            </table>
+        </div>
+
+
+    </body>

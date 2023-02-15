@@ -1,0 +1,62 @@
+table{
+    border: solid 2px black;
+    width: 90vw;
+    margin-left: 5vw;
+    box-shadow:5px 5px 8px gray;
+    color: black;
+}
+
+thead{
+    border: solid 2px;
+    background-color: darkolivegreen;
+}
+
+td{
+    background-color: RGBA( 85, 107, 47, 0.2 );
+    text-align: center;
+}
+
+#list_body{
+    align-items: center;
+}
+
+.squareValue{
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#balances{
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.sub_balances{
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.circleSquare{
+    background-color: white;
+    width: 23vw;
+    height: 12vh;
+    border: solid 4px black;
+    border-radius: 10px;
+    box-shadow:5px 5px 8px gray;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#filters{
+    margin-left: 5vw;
+    height: 5vh;
+    width: 90vw;
+    border: solid black 2px;
+    box-shadow:3px 3px 5px gray;
+    flex-direction: row;
+}
