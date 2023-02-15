@@ -8,35 +8,33 @@ const mongoose = require("mongoose");
 const port = process.env.PORT || 8081;
 const Database = require("./database");
 
-Database.connectToDatabase();
-
 //Static Files
-app.use(express.static(path.join(__dirname,"public")));
+app.use(express.static(path.join(__dirname, "public")));
 
 //body-parser
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //Routes
-app.get("/", function(req, res){
+app.get("/", function (req, res) {
     res.sendFile(__dirname + "/public/Pages/home.html");
 });
 
-app.get("/summary", function(req, res){
+app.get("/summary", function (req, res) {
     res.sendFile(__dirname + "/public/Pages/summary.html");
 });
 
-app.get("/categories", function(req, res){
+app.get("/categories", function (req, res) {
     res.sendFile(__dirname + "/public/Pages/categories.html");
 });
 
-app.get("/about", async function(req, res){
+app.get("/about", async function (req, res) {
     let operations = await Database.getAllOperations();
     console.log("OPARATIONS:", operations);
     let person = await Database.getPerson();
     console.log("PERSON:", person);
     let content = []
-    for(let i=0;i<operations.length; i++){
+    for (let i = 0; i < operations.length; i++) {
         let obj = {
             "item": operations[i].item,
             "date": operations[i].date,
@@ -47,8 +45,8 @@ app.get("/about", async function(req, res){
         content.push(obj);
     }
     console.log(content);
-    let name = person.length!=0?person[0].name:"";
-    let balance = person.length!=0?person[0].balance:0;
+    let name = person.length != 0 ? person[0].name : "";
+    let balance = person.length != 0 ? person[0].balance : 0;
 
     var body = {
         "name": name,
@@ -58,10 +56,10 @@ app.get("/about", async function(req, res){
     res.json(body);
 });
 
-app.post("/about", async function(req, res){
+app.post("/about", async function (req, res) {
     let line = req.body.text.split("\n");
     let OP = [];
-    for(let i=1;i<line.length; i++){
+    for (let i = 1; i < line.length; i++) {
         let operation = line[i].split(";");
         let obj = {
             "item": operation[0],
@@ -73,18 +71,20 @@ app.post("/about", async function(req, res){
         OP.push(obj);
         await Database.storeOparation(obj.item, obj.date, obj.value, obj.es, obj.category);
         let person = await Database.getPerson();
-        if(person.length == 0)
+        if (person.length == 0)
             await Database.storePerson(req.body.name, Number(req.body.balance));
     }
     res.send(OP);
 });
 
-app.delete("/about", async function(req, res){
+app.delete("/about", async function (req, res) {
     let msg = await Database.deleteAllOperations();
     let msg1 = await Database.deletePerson();
-    res.json({"msg": msg, "msg1": msg1});
+    res.json({ "msg": msg, "msg1": msg1 });
 });
 
-app.listen(port, function(){
-    console.log("Servidor rodando na porta " + port);
+Database.connectToDatabase().then(() => {
+    app.listen(port, function () {
+        console.log("Servidor rodando na porta " + port);
+    });
 });

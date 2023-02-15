@@ -4,7 +4,7 @@ const { response } = require("express");
 const { v4: uuid } = require("uuid");
 
 //Database
-function connectToDatabase() {
+async function connectToDatabase() {
     mongoose.connect(process.env.DATABASE_URL, {
         useNewUrlParser: true,
         useUnifiedTopology: true
