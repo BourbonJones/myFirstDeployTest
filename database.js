@@ -160,6 +160,15 @@ async function updateItens(id, produto, valor, quantidade, defeito, imagem) {
 
 }
 
+async function deleteItem(id){
+    try {
+        await Itens.deleteOne({ _id: id });
+        return { message: "Item removido com sucesso!" };
+    } catch (err) {
+        return { message: err };
+    }
+}
+
 //EXPORTS
 module.exports = {
     connectToDatabase: connectToDatabase,
@@ -171,6 +180,7 @@ module.exports = {
     deletePerson: deletePerson,
     getAllItens: getAllItens,
     storeItens: storeItens,
-    updateItens: updateItens
+    updateItens: updateItens,
+    deleteItem: deleteItem
 }
 

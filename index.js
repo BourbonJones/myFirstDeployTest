@@ -105,6 +105,12 @@ app.put("/itensk", async function (req, res) {
     res.json({ "message": message });
 });
 
+app.delete("/itensk/:produto", async function (req, res) {
+    let produto = req.params.produto;
+    let message = await Database.deleteItem(produto);
+    res.json({message: message});
+});
+
 Database.connectToDatabase().then(() => {
     app.listen(port, function () {
         console.log("Servidor rodando na porta " + port);
