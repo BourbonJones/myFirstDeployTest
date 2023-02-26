@@ -83,6 +83,28 @@ app.delete("/about", async function (req, res) {
     res.json({ "msg": msg, "msg1": msg1 });
 });
 
+app.get("/itensk", async function (req, res) {
+    let itens = await Database.getAllItens();
+    console.log(itens);
+    res.json({ "resposta": itens });
+
+});
+
+app.post("/itensk", async function (req, res) {
+    let obj = req.body;
+    let message = await Database.storeItens(obj.produto, obj.valor, obj.quantidade, obj.defeito, obj.imagem);
+    console.log(message);
+    res.json({ "message": message });
+});
+
+app.put("/itensk", async function (req, res) {
+    //Editar 1 item na tabela
+    let obj = req.body;
+    let message = await Database.updateItens( obj.id, obj.produto, obj.valor, obj.quantidade, obj.defeito, obj.imagem);
+    console.log(message);
+    res.json({ "message": message });
+});
+
 Database.connectToDatabase().then(() => {
     app.listen(port, function () {
         console.log("Servidor rodando na porta " + port);
