@@ -7,6 +7,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const port = process.env.PORT || 8081;
 const Database = require("./database");
+const cors = require("cors");
 
 //Static Files
 app.use(express.static(path.join(__dirname, "public")));
@@ -14,6 +15,9 @@ app.use(express.static(path.join(__dirname, "public")));
 //body-parser
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+//CORS
+app.use(cors());
 
 //Routes
 app.get("/", function (req, res) {
